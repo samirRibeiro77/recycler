@@ -33,10 +33,24 @@ class Strings {
     }
   }
 
+  String signup() {
+    switch(_lang) {
+      case "pt": return "Cadastre-se";
+      default: return "Singup";
+    }
+  }
+
   String fieldEmpty() {
     switch(_lang) {
       case "pt": return "Campo não pode ser vazio";
       default: return "Field can't be empty";
+    }
+  }
+
+  String name() {
+    switch(_lang) {
+      case "pt": return "Nome";
+      default: return "Name";
     }
   }
 }

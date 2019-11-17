@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/resource/app_navigation.dart';
 import 'package:recycler/resource/string_resource.dart';
 import 'package:recycler/ui/widget/text_composer.dart';
 
@@ -36,9 +37,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(Strings.instance.forgotPassword())),
           ),
           RaisedButton(
-            onPressed: (){},
+            onPressed: () {
+              AppNavigation().loginScreen();
+            },
             child: Text(Strings.instance.login()),
-          )
+          ),
+          FlatButton(
+              onPressed: (){
+                AppNavigation().signupScreen();
+              },
+              child: Text(Strings.instance.signup()))
         ],
       ),
     );
