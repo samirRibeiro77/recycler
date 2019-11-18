@@ -35,8 +35,10 @@ class _TextComposerState extends State<TextComposer> {
           if(_required && text.isEmpty)
             return Strings.instance.fieldEmpty();
         },
-        decoration: InputDecoration.collapsed(
-            hintText: _hint),
+        decoration: InputDecoration(
+          labelText: _hint,
+          labelStyle: TextStyle(color: Colors.green),
+        ),
       ),
     );
   }

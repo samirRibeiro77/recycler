@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/resource/app_navigation.dart';
 import 'package:recycler/resource/string_resource.dart';
+import 'package:recycler/ui/screen/signup_screen.dart';
 import 'package:recycler/ui/widget/text_composer.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,36 +18,46 @@ class _LoginScreenState extends State<LoginScreen> {
         title: Text(Strings.instance.appName),
         centerTitle: true,
       ),
-      body: ListView(
-        children: <Widget>[
-          TextComposer(
-              null,
-              Strings.instance.email(),
-              TextInputType.emailAddress,
-              true),
-          TextComposer(
-              null,
-              Strings.instance.password(),
-              TextInputType.visiblePassword,
-              true),
-          Visibility(
-            visible: _wrongPassword,
-            child: FlatButton(
-                onPressed: (){},
-                child: Text(Strings.instance.forgotPassword())),
-          ),
-          RaisedButton(
-            onPressed: () {
-              AppNavigation().loginScreen();
-            },
-            child: Text(Strings.instance.login()),
-          ),
-          FlatButton(
-              onPressed: (){
-                AppNavigation().signupScreen();
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextComposer(
+                null,
+                Strings.instance.email(),
+                TextInputType.emailAddress,
+                true),
+            TextComposer(
+                null,
+                Strings.instance.password(),
+                TextInputType.visiblePassword,
+                true),
+            Visibility(
+              visible: _wrongPassword,
+              child: FlatButton(
+                  onPressed: (){},
+                  child: Text(Strings.instance.forgotPassword())
+              ),
+            ),
+            RaisedButton(
+              color: Colors.green,
+              onPressed: () {
+                MaterialPageRoute(builder: (contex)=>LoginScreen());
               },
-              child: Text(Strings.instance.signup()))
-        ],
+              child: Text(Strings.instance.login()),
+            ),
+            FlatButton(
+                onPressed: (){
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (contex)=>SignupScreen())
+                  );
+                },
+                child: Text(Strings.instance.signup())
+            )
+          ],
+        ),
       ),
     );
   }
